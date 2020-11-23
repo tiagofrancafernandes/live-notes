@@ -15411,3 +15411,9 @@ iframe.uk-cover {
   cursor: pointer;
 }
 
+@media (max-width: 550px) {
+  .uk-button.mod-mobile {
+    padding: 0 !important;
+  }
+}
+

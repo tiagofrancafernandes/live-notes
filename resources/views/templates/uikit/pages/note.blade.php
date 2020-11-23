@@ -32,9 +32,9 @@
                     spellcheck="false"
                 >
             </div>
-            <div class="uk-width-1-6">
+            <div class="uk-width-1-6 uk-padding-remove-left">
                 <div class="uk-flex uk-flex-between">
-                    <button class="uk-button uk-button-primary uk-width-1-1" title="Update title" uk-tooltip="Update title">
+                    <button class="mod-mobile uk-button uk-button-primary uk-width-1-1" title="Update title" uk-tooltip="Update title">
                         <i uk-icon="icon: check; ratio: 1.5"></i>
                     </button>
                 </div>
@@ -45,9 +45,9 @@
             <div class="uk-width-5-6 uk-first-column">
                 <input class="uk-input uk-width-1-1" type="text" placeholder="Note slug" title="Note slug">
             </div>
-            <div class="uk-width-1-6">
+            <div class="uk-width-1-6 uk-padding-remove-left">
                 <div class="uk-flex uk-flex-between">
-                    <button class="uk-button uk-button-primary uk-width-1-1" title="Update slug" uk-tooltip="Update slug">
+                    <button class="mod-mobile uk-button uk-button-primary uk-width-1-1" title="Update slug" uk-tooltip="Update slug">
                         <i uk-icon="icon: check; ratio: 1.5"></i>
                     </button>
                 </div>
@@ -85,15 +85,15 @@
             <div class="uk-flex uk-flex-column uk-width-1-1">
                 
                 <div class="uk-flex uk-flex-between">
-                    <button class="uk-button uk-button-small uk-button-danger uk-width-1-6" title="Delete" uk-tooltip="Delete">
+                    <button class="mod-mobile uk-button uk-button-small uk-button-danger uk-width-1-6" title="Delete" uk-tooltip="Delete">
                         <i uk-icon="icon: trash; ratio: 1.5"></i>
                     </button>
                     
-                    <button class="uk-button uk-button-secondary uk-width-1-6" title="Restore back state" uk-tooltip="Restore back state">
+                    <button class="mod-mobile uk-button uk-button-secondary uk-width-1-6" title="Restore back state" uk-tooltip="Restore back state">
                         <i uk-icon="icon: history; ratio: 1.5"></i>
                     </button>
 
-                    <button class="uk-button uk-button-primary uk-button-small uk-width-1-6" title="Save note" uk-tooltip="Save note">
+                    <button class="mod-mobile uk-button uk-button-primary uk-button-small uk-width-1-6" title="Save note" uk-tooltip="Save note">
                         <i uk-icon="icon: check; ratio: 1.5"></i>
                     </button>
                 </div>
