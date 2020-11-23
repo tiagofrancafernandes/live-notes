@@ -26,7 +26,13 @@ Route::get('/note/{slug}', function ($slug) {
         'note_name'         => 'Minha Nota Bonita',
         'note_description'  => 'Minha Nota Bonita',
         'note_visibility'   => 'public',
-        'note_content'      => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus repellendus corrupti explicabo porro expedita, iste pariatur dolor natus sit inventore id a nobis in, tenetur laboriosam repellat est magnam earum.'
+        'note_content'      => 
+'var x = 100;
+var text = "hello, world";
+
+console.log(x);
+alert(text);
+',
     ];
     return view('templates.uikit.pages.note', compact('data'));
 });
