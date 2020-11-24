@@ -1,6 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="">
-
 <head>
     <meta charset="utf-8">
     <title></title>
@@ -18,7 +17,8 @@
     <link rel="stylesheet" href="{{ asset('mix/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('mix/css/uikit.css') }}">
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+    @livewireStyles
+    
 </head>
 
 <body>
@@ -98,7 +98,6 @@
 
         </div>
     </div>
-    
 
     <!-- All JavaScript -->
     <script src="{{ asset('mix/js/all.js') }}"></script>
@@ -109,79 +108,83 @@
             ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async></script>
-    <script>
-        window.editor               = ace.edit("editor");        
-        window.default_font_size    = 15;
-        window.editor.setTheme("ace/theme/monokai");
-        window.editor.getSession().setMode("ace/mode/javascript");
-        window.editor.setFontSize(window.default_font_size);
-        window.editor_langs         = [
-            'plain_text', 'php', 'javascript', 'sh', 'css', 'scss', 'sql'
-        ];
-    </script>
 
     <script>
-        function isInt(num)
-        {
-            return Number.isInteger(num);
-        }
-
-        function editorSetLang(lang_mode)
-        {
-            // Lang list:
-            // https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
-            var valid_lang = window.editor_langs.indexOf(lang_mode) != -1;
-            if(valid_lang)
-            {
-                window.editor.session.setMode({
-                    path: "ace/mode/" + lang_mode,
-                    v: Date.now() 
-                });
-            }
-        }
-
-        var lang_mode               = 'javascript';
-        editorSetLang(lang_mode);
-
-        function editorUndo()
-        {
-            window.editor.undo();
-        }
-
-        function editorRedo()
-        {
-            window.editor.redo();
-        }
-
-        function resetFontSize()
-        {
+        document.addEventListener('DOMContentLoaded', (event) => {
+            window.editor               = ace.edit("editor");        
+            window.default_font_size    = 15;
+            window.editor.setTheme("ace/theme/monokai");
+            window.editor.getSession().setMode("ace/mode/javascript");
             window.editor.setFontSize(window.default_font_size);
-        }
-
-        function editorSetFontSize(new_font_size)
-        {
-            if(isInt(new_font_size))
+            window.editor_langs         = [
+                'plain_text', 'php', 'javascript', 'sh', 'css', 'scss', 'sql'
+            ];
+                
+            function isInt(num)
             {
-                new_font_size       = new_font_size <= 0 ? 1 : new_font_size;
-                new_font_size       = new_font_size >= 70 ? 70 : new_font_size;
-                window.editor.setFontSize(new_font_size);
+                return Number.isInteger(num);
             }
-        }
 
-        function editorIncreaseFontSize()
-        {
-            var font_size       = window.editor.getFontSize();
-            var new_font_size   = font_size + 1;
-            editorSetFontSize(new_font_size);
-        }
+            function editorSetLang(lang_mode)
+            {
+                // Lang list:
+                // https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
+                var valid_lang = window.editor_langs.indexOf(lang_mode) != -1;
+                if(valid_lang)
+                {
+                    window.editor.session.setMode({
+                        path: "ace/mode/" + lang_mode,
+                        v: Date.now() 
+                    });
+                }
+            }
 
-        function editorDecreaseFontSize()
-        {
-            var font_size       = window.editor.getFontSize();
-            var new_font_size   = font_size - 1;
-            editorSetFontSize(new_font_size);
-        }
+            function editorUndo()
+            {
+                window.editor.undo();
+            }
+
+            function editorRedo()
+            {
+                window.editor.redo();
+            }
+
+            function resetFontSize()
+            {
+                window.editor.setFontSize(window.default_font_size);
+            }
+
+            function editorSetFontSize(new_font_size)
+            {
+                if(isInt(new_font_size))
+                {
+                    new_font_size       = new_font_size <= 0 ? 1 : new_font_size;
+                    new_font_size       = new_font_size >= 70 ? 70 : new_font_size;
+                    window.editor.setFontSize(new_font_size);
+                }
+            }
+
+            function editorIncreaseFontSize()
+            {
+                var font_size       = window.editor.getFontSize();
+                var new_font_size   = font_size + 1;
+                editorSetFontSize(new_font_size);
+            }
+
+            function editorDecreaseFontSize()
+            {
+                var font_size       = window.editor.getFontSize();
+                var new_font_size   = font_size - 1;
+                editorSetFontSize(new_font_size);
+            }
+
+            var lang_mode               = 'javascript';
+            editorSetLang(lang_mode);
+        });
     </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+
+    @livewireScripts
 </body>
 
 </html>

@@ -3,6 +3,7 @@
 @section('title')
 {{ env('APP_NAME') }} {{ $data['note_name'] }}
 @endsection
+
 @section('content')
 <form method="post" action="{{ route('actions_update_post') }}">
     @csrf

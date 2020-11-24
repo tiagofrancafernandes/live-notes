@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('templates.uikit/app');
+    // return view('templates.uikit/app');
+    return redirect('/note/notaxyz');
 });
 
 Route::get('/note/{slug}', function ($slug) {
