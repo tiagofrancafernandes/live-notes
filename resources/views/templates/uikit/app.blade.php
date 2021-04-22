@@ -110,6 +110,65 @@
     <script src="https://www.google-analytics.com/analytics.js" async></script>
 
     <script>
+        function isInt(num)
+        {
+            return Number.isInteger(num);
+        }
+
+        function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0); }
+
+        function editorSetLang(lang_mode)
+        {
+            // Lang list:
+            // https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
+            var valid_lang = window.editor_langs.indexOf(lang_mode) != -1;
+            if(valid_lang)
+            {
+                window.editor.session.setMode({
+                    path: "ace/mode/" + lang_mode,
+                    v: Date.now() 
+                });
+            }
+        }
+
+        function editorUndo()
+        {
+            window.editor.undo();
+        }
+
+        function editorRedo()
+        {
+            window.editor.redo();
+        }
+
+        function resetFontSize()
+        {
+            window.editor.setFontSize(window.default_font_size);
+        }
+
+        function editorSetFontSize(new_font_size)
+        {
+            if(isInt(new_font_size))
+            {
+                new_font_size       = new_font_size <= 0 ? 1 : new_font_size;
+                new_font_size       = new_font_size >= 70 ? 70 : new_font_size;
+                window.editor.setFontSize(new_font_size);
+            }
+        }
+
+        function editorIncreaseFontSize()
+        {
+            var font_size       = window.editor.getFontSize();
+            var new_font_size   = font_size + 1;
+            editorSetFontSize(new_font_size);
+        }
+
+        function editorDecreaseFontSize()
+        {
+            var font_size       = window.editor.getFontSize();
+            var new_font_size   = font_size - 1;
+            editorSetFontSize(new_font_size);
+        }
         document.addEventListener('DOMContentLoaded', (event) => {
             window.editor               = ace.edit("editor");        
             window.default_font_size    = 15;
@@ -119,64 +178,6 @@
             window.editor_langs         = [
                 'plain_text', 'php', 'javascript', 'sh', 'css', 'scss', 'sql'
             ];
-                
-            function isInt(num)
-            {
-                return Number.isInteger(num);
-            }
-
-            function editorSetLang(lang_mode)
-            {
-                // Lang list:
-                // https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
-                var valid_lang = window.editor_langs.indexOf(lang_mode) != -1;
-                if(valid_lang)
-                {
-                    window.editor.session.setMode({
-                        path: "ace/mode/" + lang_mode,
-                        v: Date.now() 
-                    });
-                }
-            }
-
-            function editorUndo()
-            {
-                window.editor.undo();
-            }
-
-            function editorRedo()
-            {
-                window.editor.redo();
-            }
-
-            function resetFontSize()
-            {
-                window.editor.setFontSize(window.default_font_size);
-            }
-
-            function editorSetFontSize(new_font_size)
-            {
-                if(isInt(new_font_size))
-                {
-                    new_font_size       = new_font_size <= 0 ? 1 : new_font_size;
-                    new_font_size       = new_font_size >= 70 ? 70 : new_font_size;
-                    window.editor.setFontSize(new_font_size);
-                }
-            }
-
-            function editorIncreaseFontSize()
-            {
-                var font_size       = window.editor.getFontSize();
-                var new_font_size   = font_size + 1;
-                editorSetFontSize(new_font_size);
-            }
-
-            function editorDecreaseFontSize()
-            {
-                var font_size       = window.editor.getFontSize();
-                var new_font_size   = font_size - 1;
-                editorSetFontSize(new_font_size);
-            }
 
             var lang_mode               = 'javascript';
             editorSetLang(lang_mode);
